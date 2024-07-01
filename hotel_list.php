@@ -41,14 +41,6 @@
     ];
 
 
-foreach ($hotels as $hotel) {
-    foreach ($hotel as $key => $value) {
-
-    }
-}
-
-
-
 
 ?>
 
@@ -58,19 +50,55 @@ foreach ($hotels as $hotel) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>PHP Hotel</title>
 </head>
 <body>
-    <main>
-        <ul> <?php foreach ($hotels as $hotel) { ?>
+    <main class="container">
+        <section class="hotels row">
+            <table class="table table-striped table-hover col-8 mt-5">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Parking
+                        </th>
+                        <th>
+                            Vote
+                        </th>
+                        <th>
+                            Distance to city center
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($hotels as $hotel) { ?>
+                        <tr>
+                            <?php foreach ($hotel as $value) { ?>
+                                <td>
+                                    <?php echo "$value" ?>
+                                </td>
+                            <?php } ?>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
+
+
+<!-- <ul> <?php foreach ($hotels as $hotel) { ?>
             <li>
                 <?php foreach ($hotel as $key => $value) { 
                     echo "$key : $value"; 
                     echo "<br>";
                     } ?>
             </li>
-        <?php } ?></ul> 
-    </main>
-</body>
-</html>
-
+        <?php } ?></ul>  -->
