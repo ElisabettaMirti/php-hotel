@@ -40,8 +40,23 @@
 
     ];
 
+$hotelsCopy = $hotels;
 
+if (isset($_GET["parking"])){
+    $parking = $_GET["parking"];
 
+    if ($parking == 1){
+        $newArray = [];
+
+        foreach ($hotelsCopy as $hotel) {
+            if ($hotel["parking"] === true){
+                $newArray[] = $hotel;
+            }
+        }
+
+        $hotelsCopy = $newArray;
+    }
+}
 ?>
 
 
@@ -54,9 +69,28 @@
     <title>PHP Hotel</title>
 </head>
 <body>
-    <main class="container">
+    <header class="container-fluid p-4">
+        <h1 class="text-center">
+            PHP Hotel
+        </h1>
+    </header>
+    <main class="container p-3">
+        <section class="searchbar row">
+            <div class="col-8">
+                <form action="./hotel_list.php" method="GET">
+                    <div class="options mb-3">
+                        <label for="parking">Parking required?</label>
+                        <select name="parking" id="parking">
+                            <option value="0" selected>No</option>
+                            <option value="1">Yes, please</option>
+                        </select>
+                        <button type="submit">Filter</button>
+                    </div>
+                </form>
+            </div>
+        </section>
         <section class="hotels row">
-            <table class="table table-striped table-hover col-8 mt-5">
+            <table class="table table-striped table-hover col-8 mt-2">
                 <thead>
                     <tr>
                         <th>
@@ -77,7 +111,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($hotels as $hotel) { ?>
+                    <?php foreach ($hotelsCopy as $hotel) { ?>
                         <tr>
                             <?php foreach ($hotel as $value) { ?>
                                 <td>
