@@ -40,4 +40,37 @@
 
     ];
 
+
+foreach ($hotels as $hotel) {
+    foreach ($hotel as $key => $value) {
+
+    }
+}
+
+
+
+
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Hotel</title>
+</head>
+<body>
+    <main>
+        <ul> <?php foreach ($hotels as $hotel) { ?>
+            <li>
+                <?php foreach ($hotel as $key => $value) { 
+                    echo "$key : $value"; 
+                    echo "<br>";
+                    } ?>
+            </li>
+        <?php } ?></ul> 
+    </main>
+</body>
+</html>
+
