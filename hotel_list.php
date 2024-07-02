@@ -57,6 +57,23 @@ if (isset($_GET["parking"])){
         $hotelsCopy = $newArray;
     }
 }
+
+
+if (isset($_GET["stars"])){
+    $stars = $_GET["stars"];
+
+    if ($stars >= 1 && $stars <= 5) {
+        $newArray = [];
+
+        foreach ($hotelsCopy as $hotel) {
+            if ($hotel["vote"] >= $stars){
+                $newArray[] = $hotel;
+            }
+        }
+
+        $hotelsCopy = $newArray;
+    }
+}
 ?>
 
 
@@ -78,14 +95,25 @@ if (isset($_GET["parking"])){
         <section class="searchbar row">
             <div class="col-8">
                 <form action="./hotel_list.php" method="GET">
-                    <div class="options mb-3">
-                        <label for="parking">Parking required?</label>
-                        <select name="parking" id="parking">
-                            <option value="0" selected>No</option>
-                            <option value="1">Yes, please</option>
-                        </select>
-                        <button type="submit">Filter</button>
+                    <div class="row d-flex align-items-start">
+                        <div class="parking-options col-3 mb-3">
+                            <label for="parking">Parking required?</label>
+                            <select name="parking" id="parking">
+                                <option value="0" selected>No</option>
+                                <option value="1">Yes, please</option>
+                            </select>
+                        </div>
+                        <div class="stars-options col-3">
+                            <label for="stars">Minimun of stars</label>
+                            <input type="number" name="stars" id="stars" min="1" max="5" required>
+                        </div>
+                        <div class="btn col-3 p-3">
+                            <button class="p-1" type="submit">Filter</button>
+                        </div>
+                        
                     </div>
+                    
+                    
                 </form>
             </div>
         </section>
